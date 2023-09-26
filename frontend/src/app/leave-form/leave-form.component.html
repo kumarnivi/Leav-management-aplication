@@ -1,0 +1,99 @@
+<!-- <div class="container">
+    <h4 class="">Add Leave</h4>
+    <form (submit)="submitLeave()" class="form-group">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" [(ngModel)]="name" class="form-control">
+        </div>
+        <div class="col-md-6">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" [(ngModel)]="email" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="dateTo">Date to</label>
+          <input type="date" id="dateTo" name="dateTo" [(ngModel)]="dateTo" class="form-control">
+        </div>
+        <div class="col-md-6">
+          <label for="dateFrom">Date from</label>
+          <input type="date" id="dateFrom" name="dateFrom" [(ngModel)]="dateFrom" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <label for="reason">Reason</label>
+        <textarea id="reason" name="reason" [(ngModel)]="reason" cols="30" rows="5" class="form-control"></textarea>
+      </div>
+      <div class="row pt-3">
+        <div class="col-md-6">
+          <button type="submit" class="btn btn-warning">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div> -->
+  
+
+  <div class="container">
+    <h4 class="">Add Leave</h4>
+    <form (submit)="submitLeave()" class="form-group">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" [(ngModel)]="name" class="form-control">
+        </div>
+        <div class="col-md-6">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" [(ngModel)]="email" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="dateTo">Date to</label>
+          <input type="date" id="dateTo" name="dateTo" [(ngModel)]="dateTo" class="form-control">
+        </div>
+        <div class="col-md-6">
+          <label for="dateFrom">Date from</label>
+          <input type="date" id="dateFrom" name="dateFrom" [(ngModel)]="dateFrom" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <label for="reason">Reason</label>
+        <textarea id="reason" name="reason" [(ngModel)]="reason" cols="30" rows="5" class="form-control"></textarea>
+      </div>
+      <div class="row pt-3">
+        <div class="col-md-6">
+          <button type="submit" class="btn btn-warning">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+
+  <div class="container p-5">
+    <!-- Display the submitted data in a table -->
+    <h4>Submitted Data</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Date To</th>
+          <th>Date From</th>
+          <th>Reason</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of submittedData">
+          <td>{{ data.name }}</td>
+          <td>{{ data.email }}</td>
+          <td>{{ data.dateTo }}</td>
+          <td>{{ data.dateFrom }}</td>
+          <td>{{ data.reason }}</td>
+          <td>{{data.action}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

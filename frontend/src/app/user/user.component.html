@@ -1,0 +1,70 @@
+<div class="container ">
+    <div class="">
+        <h3>Add User</h3>
+    </div>
+
+    <form action="">
+        <div class="form-group">
+            <label for="">Name</label>
+            <input type="text" name="" id="" [(ngModel)]="name" [ngModelOptions]="{standalone:true}" class="form-control">
+        </div>
+     <div class="form-group">
+        <label for="">emial</label>
+        <input type="text" name="" id="" [(ngModel)]="email" [ngModelOptions]="{standalone:true}" class="form-control">
+     </div>
+     <div class="form-group">
+        <label for="">NIC NO</label>
+        <input type="text" name="" id="" [(ngModel)]="NIC" [ngModelOptions]="{standalone:true}" class="form-control">
+     </div>
+     <div class="form-group">
+        <label for="">phoneNum</label>
+        <input type="text" name="" id="" [(ngModel)]="phonenum" [ngModelOptions]="{standalone:true}" class="form-control">
+     </div>
+    <div class="pt-5">
+        <button type="submit" class="btn btn-success" (click)="save()" >{{ isUpdateFormActive ? 'Update' : 'Add' }}</button>
+    </div>
+   
+    </form>
+</div>
+
+
+<!-- table content -->
+<div class="contaner">
+    <h1>Detailes OF Users</h1>
+    <table class="table">
+        <thead>
+            <h1 *ngIf="!isResultLoaded">Loading ... </h1>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Nic NO</th>
+                <th>Phone Number</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let userItem of userArray">
+                <td> {{userItem.id}} </td>
+                <td> {{userItem.name}} </td>
+                <td> {{userItem.email}} </td>
+                <td> {{userItem.NIC}}</td>
+                <td> {{userItem.phonenum}} </td>
+                <td>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-success " (click)="setUpdate(userItem)">Edit</button> 
+
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-danger" (click)="setDelete(userItem)">Delete</button>
+ 
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+       
+    </table>
+</div>
