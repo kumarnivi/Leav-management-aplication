@@ -1,0 +1,29 @@
+
+.navbar-nav .nav-link {
+    color: white !important; 
+  }
+  
+  
+  .navbar-nav .nav-item.active .nav-link {
+    color: white !important; 
+  }
+  
+  
+  .navbar-toggler-icon {
+    background-color: white; 
+  }
+  
+  .dropdown-menu a.dropdown-item {
+    color: black; 
+  }
+  
+  .dropdown-menu {
+    background-color: white; 
+  }
+
+  .container-fluid{
+  padding: 0px 25px 0px 25px;
+ 
+
+  }
+  

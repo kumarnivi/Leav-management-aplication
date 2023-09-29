@@ -14,6 +14,9 @@ export class LeaveFormComponent implements OnInit  {
   reason: string = '';
   submittedData: any[] = [];
 
+  isFormVisible = false;
+  isButtonVisible = true;
+
   
   constructor(private http: HttpClient) {}
   
@@ -62,4 +65,10 @@ export class LeaveFormComponent implements OnInit  {
       );
   }
   
+
+  
+  toggleFormVisibility() {
+    this.isFormVisible = !this.isFormVisible;
+    this.isButtonVisible = !this.isButtonVisible; 
+  }
 }

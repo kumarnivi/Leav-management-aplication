@@ -98,10 +98,6 @@ server.put("/api/student/update/:id", (req, res) => {
   });
 });
 
-
-
-
-
 // ******************************************************************************************************************************
 
 // Helper function to execute SQL queries
@@ -182,9 +178,6 @@ server.post('/api/users/login', async (req, res) => {
   
 
 
-
-  /***************************************************************************************************************************************/ 
-
 //  update password
 
 // server.post('/api/users/change-password', async (req, res) => {
@@ -228,6 +221,8 @@ server.post('/api/users/login', async (req, res) => {
 //   return token;
 // }
 
+
+
 function generateChangeToken(userId) {
   const secretKey = 'your-secret-key'; // Replace with your secret key
   const expiresIn = '1h'; // Token expiration time
@@ -238,7 +233,6 @@ function generateChangeToken(userId) {
 }
 
 // password reset request send by email
-
 
 server.post('/api/users/request-password-change', async (req, res) => {
   try {
@@ -324,8 +318,8 @@ server.post('/api/users/reset-password', async (req, res) => {
     })
 })
 
-// get single user
 
+// get single user
 server.get("/api/users/:id", async (req, res) => {
   try {
     const userId = req.params.id;
@@ -364,7 +358,6 @@ server.get("/api/users/:id", async (req, res) => {
 
 
 //  leave request form
-
 server.post('/api/leave_requests', async (req, res) => {
   const { name, email, date_from, date_to, reason } = req.body;
 

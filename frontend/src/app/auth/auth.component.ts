@@ -33,7 +33,7 @@ export class AuthComponent {
             // Registration success
             this.registrationSuccess = true;
             this.registrationError = ''; // Clear any previous error message
-            this.router.navigate(['/']); // Redirect to the home page
+            this.router.navigate(['/leave-form']); // Redirect to the home page
           },
           (error) => {
             // Registration error
@@ -52,7 +52,7 @@ export class AuthComponent {
           // Login success
           this.loginSuccess = true;
           this.loginError = ''; // Clear any previous error message
-          this.router.navigate(['/']); // Redirect to the home page
+          this.router.navigate(['/leave-form']); // Redirect to the home page
         
         },
         (error) => {
