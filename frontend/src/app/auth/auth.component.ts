@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-auth',
   templateUrl: 'auth.component.html',
@@ -18,7 +18,7 @@ export class AuthComponent {
   loginSuccess:Boolean = false 
   loginError:string= ''
 
-  constructor(private userService: UserService,private router: Router) { }
+  constructor(private userService: UserService,private router: Router,private toastr: ToastrService) { }
 
   toggleMode() {
     this.isRegistrationMode = !this.isRegistrationMode;
@@ -34,11 +34,14 @@ export class AuthComponent {
             this.registrationSuccess = true;
             this.registrationError = ''; // Clear any previous error message
             this.router.navigate(['/leave-form']); // Redirect to the home page
+            this.toastr.success('Registration successful!', 'Success');
           },
           (error) => {
             // Registration error
             this.registrationSuccess = false;
             this.registrationError = 'Registration failed. Please try again.'; // Set an error message
+
+            this.toastr.error('Registration failed. Please try again.', 'Error');
           }
         );
     } else {
@@ -54,11 +57,14 @@ export class AuthComponent {
           this.loginError = ''; // Clear any previous error message
           this.router.navigate(['/leave-form']); // Redirect to the home page
         
+          this.toastr.success('Login successful!', 'Success');
         },
         (error) => {
           // Login error
           this.loginSuccess = false;
           this.loginError = 'Login failed. Please check your credentials and try again.'; // Set an error message
+      
+          this.toastr.error('Login failed. Please check your credentials and try again.', 'Error');
         }
       );
     }
