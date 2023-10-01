@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
 
   private apiUrl = 'http://localhost:8080/api/users'; // Replace with your backend API URL
-
+  private isAuthenticated = false;
   constructor(private http: HttpClient) { }
 
   register(name: string, email: string, password: string) {
@@ -16,6 +16,15 @@ export class UserService {
 
   login(email: string, password: string) {
     return this.http.post(`${this.apiUrl}/login`, { email, password });
+    this.isAuthenticated = true;
+  }
+
+  logout() {
+    this.isAuthenticated = false;
+  }
+
+  isAuthenticatedUser(): boolean {
+    return this.isAuthenticated;
   }
 
   requestPasswordChange(email: string) {

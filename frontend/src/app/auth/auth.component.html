@@ -1,47 +1,57 @@
- <div class="container">
-   <div class="wrapper">
-     <div class="title">
-       {{ isRegistrationMode ? 'Register Form' : 'Login Form' }}
-     </div>
-     <form  (ngSubmit)="submitForm()">
-       <!-- Name field, only displayed in registration mode -->
-       <div *ngIf="isRegistrationMode" class="field">
-         <input type="text" id="name" name="name" [(ngModel)]="name" class="form-control">
-         <label>Name</label>
-       </div>
-       
-       <!-- Email field -->
-       <div class="field">
-         <input type="text" id="email" name="email" [(ngModel)]="email" class="form-control">
-         <label>Email Address</label>
-       </div>
- 
-       <!-- Password field -->
-       <div class="field">
-         <input type="password" id="password" name="password" [(ngModel)]="password" class="form-control">
-         <label>Password</label>
-       </div>
- 
-       <div class="content">
-         <div class="checkbox">
-           <input type="checkbox" id="remember-me">
-           <label for="remember-me">Remember me</label>
-         </div>
-         <div class="pass-link">
-           <a href="#">Forgot password?</a>
-         </div>
-       </div>
-       <div class="field">
-         <input type="submit" [value]="isRegistrationMode ? 'Register' : 'Login'">
-       </div>
-       <div class="signup-link">
-         {{ isRegistrationMode ? 'Already a member? ' : 'Not a member? ' }}
-         <a  (click)="toggleMode()">
-           {{ isRegistrationMode ? 'Login now' : 'Signup now' }}
-         </a>
-       </div>
-     </form>
-   </div>
- </div>
- 
-    
+<div class="container">
+  <div class="wrapper">
+    <div class="title">
+      {{ isRegistrationMode ? 'Register Form' : 'Login Form' }}
+    </div>
+    <form (ngSubmit)="submitForm()" #authForm="ngForm">
+      <!-- Name field, only displayed in registration mode -->
+      <div *ngIf="isRegistrationMode" class="field">
+        <input type="text" id="name" name="name" [(ngModel)]="name" class="form-control" required minlength="3">
+        <label>Name</label>
+        <div class="error" *ngIf="authForm.controls['name']?.touched && authForm.controls['name'].hasError('required')">
+          Name is required.
+        </div>
+        <div class="error" *ngIf="authForm.controls['name']?.touched && authForm.controls['name'].hasError('minlength')">
+          Name must be at least 3 characters.
+        </div>
+      </div>
+      
+      <!-- Email field -->
+      <div class="field">
+        <input type="text" id="email" name="email" [(ngModel)]="email" class="form-control" required email>
+        <label>Email Address</label>
+        <div class="error" *ngIf="authForm.controls['email']?.touched && authForm.controls['email'].hasError('required')">
+          Email is required.
+        </div>
+        <div class="error" *ngIf="authForm.controls['email']?.touched && authForm.controls['email'].hasError('email')">
+          Invalid email format.
+        </div>
+      </div>
+
+      <!-- Password field -->
+      <div class="field">
+        <input type="password" id="password" name="password" [(ngModel)]="password" class="form-control" required minlength="6">
+        <label>Password</label>
+        <div class="error" *ngIf="authForm.controls['password']?.touched && authForm.controls['password'].hasError('required')">
+          Password is required.
+        </div>
+        <div class="error" *ngIf="authForm.controls['password']?.touched && authForm.controls['password'].hasError('minlength')">
+          Password must be at least 6 characters.
+        </div>
+      </div>
+
+      <div class="content">
+        <!-- Checkbox and Forgot Password link here -->
+      </div>
+      <div class="field">
+        <input type="submit" [value]="isRegistrationMode ? 'Register' : 'Login'" [disabled]="authForm.invalid">
+      </div>
+      <div class="signup-link">
+        {{ isRegistrationMode ? 'Already a member? ' : 'Not a member? ' }}
+        <a (click)="toggleMode()">
+          {{ isRegistrationMode ? 'Login now' : 'Signup now' }}
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
